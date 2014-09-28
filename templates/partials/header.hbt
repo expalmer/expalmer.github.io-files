@@ -40,7 +40,9 @@
     <meta property="og:url" content="{{base}}{{this.path}}">
     <meta property="og:site_name" content="{{{meta 'title'}}}">
 
-    <link rel="stylesheet" href="{{{base}}}styles/main.min.css">
+    <meta name="google-site-verification" content="BkRIiZn31VGZWd4NBpMhpA8pxdgnSOVwB0jaCFP800M" />
+
+    <link rel="stylesheet" href="/styles/main.min.css">
 
     <link href="{{{base}}}favico.ico" rel="icon">
 

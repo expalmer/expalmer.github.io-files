@@ -1,5 +1,5 @@
 
-var base   = 'http://localhost:3333/';
+var base   = 'http://expalmer.github.io/';
 var author = '@expalmer';
 
 module.exports =  {
