@@ -1,0 +1,22 @@
+{{> header}}
+  <section class="content">
+    <h1 class="tag__title {{tag}} active">{{replaceTrace tag}}</h1>
+    {{#each posts }}
+      <article class="posts">
+        <header class="post__header">
+          <span class="post__time">
+            <time datetime="{{{ dateFormat this.date }}}">{{{ dateFormat this.date }}}</time>
+          </span>
+          <h1>
+            <a href="{{this.path}}/" class="post__link">{{this.title}}</a>
+          </h1>
+        </header>
+        <iside class="post__tags">
+          {{#each this.tags }}
+            <a href="{{{base}}}tags/{{this}}/" class="post_tags-link {{this}}">{{this}}</a>
+          {{/each}}
+        </iside>
+      </article>
+    {{/each}}
+  </section>
+{{> footer}}

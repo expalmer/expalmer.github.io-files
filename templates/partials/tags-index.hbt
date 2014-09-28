@@ -1,0 +1,13 @@
+{{> header}}
+  <section class="content">
+    <ul class="alltags">
+    {{#each this.tags }}
+      <li>
+        <a href="{{base}}{{../tagsPath}}/{{this.tag}}/" class="alltags__link {{this.tag}}" title="Posts sobre {{replaceTrace this.tag}}">
+          <h2>{{replaceTrace this.tag}} <small class="alltags__total">[ {{this.total}} ]</small></h2>
+        </a>
+      </li>
+    {{/each}}
+    </ul>
+  </section>
+{{> footer}}
