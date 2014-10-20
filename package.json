@@ -19,6 +19,7 @@
     "metalsmith-tags": "^0.6.1",
     "metalsmith-templates": "^0.5.2",
     "metalsmith-uglify": "0.0.6",
+    "metalsmith-untemplatize": "^0.1.0",
     "moment": "^2.7.0",
     "path": "^0.4.9",
     "q": "^1.0.1",

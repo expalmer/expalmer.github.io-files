@@ -7,12 +7,14 @@
             <time datetime="{{{ dateFormat this.date }}}">{{{ dateFormat this.date }}}</time>
           </span>
           <h1>
-            <a href="{{this.path}}/" class="post__link">{{this.titleFull}}</a>
+            <a href="{{base}}/{{this.path}}/" class="post__link" title="{{this.titleFull}}">
+              {{this.titleFull}}
+            </a>
           </h1>
         </header>
         <iside class="post__tags">
           {{#each this.tags }}
-            <a href="{{{base}}}tags/{{this}}/" class="post_tags-link {{this}}" title="Veja mais posts sobre {{this}}">{{this}}</a>
+            <a href="{{{base}}}/tags/{{this}}/" class="post_tags-link {{this}}" title="Veja mais posts sobre {{this}}">{{this}}</a>
           {{/each}}
         </iside>
         <section class="post__resume">

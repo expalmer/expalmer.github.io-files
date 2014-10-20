@@ -1,5 +1,6 @@
 
-var base   = 'http://expalmer.github.io/';
+var base   = 'http://expalmer.github.io';
+// var base   = 'http://localhost:3333';
 var author = '@expalmer';
 
 module.exports =  {
@@ -9,5 +10,10 @@ module.exports =  {
   description   : 'Blog sobre FrontEnd, Html, Css e Javascript.',
   keywords      : '',
   author        : author,
-  image         : base + 'images/palmer.jpg'
+  image         : base + '/images/palmer.jpg',
+  tags          : [
+    'web',
+    'front-end',
+    'javascript'
+  ]
 };

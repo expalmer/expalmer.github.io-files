@@ -6,7 +6,7 @@
             <time itemprop="datePublished" content="{{{ dateFormat this.date }}}" datetime="{{{ dateFormat this.date }}}">{{{ dateFormat this.date }}}</time>
           </span>
           <h1>
-            <a href="{{base}}{{this.path}}" class="post__link" itemprop="name" title="{{this.titleFull}}">
+            <a href="{{base}}/{{this.path}}/" class="post__link" itemprop="name" title="{{this.titleFull}}">
               {{this.titleFull}}
             </a>
           </h1>
@@ -14,7 +14,7 @@
         </header>
         <iside class="post__tags">
           {{#each this.tags }}
-            <a href="{{{base}}}tags/{{this}}/" class="post_tags-link {{this}}">{{this}}</a>
+            <a href="{{{base}}}/tags/{{this}}/" class="post_tags-link {{this}}" title="Veja mais posts sobre {{this}}">{{this}}</a>
           {{/each}}
         </iside>
         <div class="post__body">
@@ -26,6 +26,7 @@
       <div id="disqus_thread"></div>
       <script data-cfasync="true" type="text/javascript">
           var disqus_shortname = 'expalmer';
+          var disqus_url = '{{base}}/{{this.path}}/';
           (function() {
               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
               dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

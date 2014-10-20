@@ -38,6 +38,11 @@ module.exports = {
       return moment(context).format("LL");
     });
 
+    Handlebars.registerHelper('dateGMT', function( context ) {
+      context = context === 'new' ? new Date() : context;
+      return context.toGMTString();
+    });
+
     Handlebars.registerHelper('base', function() {
       return metatags.base;
     });

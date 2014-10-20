@@ -9,13 +9,15 @@ var tagsIndex    = require('./helpers/tags-index');
 var gist         = require('metalsmith-gist');
 var drafts       = require('metalsmith-drafts');
 
+var untemplatize = require('metalsmith-untemplatize');
+
 var concat       = require('metalsmith-concat');
 var cleanCSS     = require('metalsmith-clean-css');
 var uglify       = require('metalsmith-uglify')
 var htmlMinifier = require("metalsmith-html-minifier");
 
 var helpers      = require('./helpers/helpers');
-
+//<lastBuildDate>Wed, 01 Oct 2014 22:26:55 GMT</lastBuildDate>
 helpers.handlebarsHelpers( Handlebars );
 
 Metalsmith(__dirname)
@@ -46,6 +48,9 @@ Metalsmith(__dirname)
         template: '/partials/tags-index.hbt',
         sortBy: 'tag',
         reverse: false
+    }))
+    .use(untemplatize({
+        key: 'untemplatized'
     }))
     .use(templates('handlebars'))
 
