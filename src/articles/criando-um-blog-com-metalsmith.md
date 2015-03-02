@@ -31,6 +31,8 @@ Instale globalmente em sua máquina ``npm -g install httpster``, depois entre na
 ---- src
 -------- index.md
 -------- rss.xml
+-------- css
+-------------- style.css
 -------- posts
 -------------- post-1.md
 -------------- post-2.md
