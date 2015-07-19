@@ -972,10 +972,12 @@ Só um script para mostrar um confirm quando exluir.
   };
 
   app.init = function () {
-    this.$form = document.querySelectorAll('.js-delete-form');
-    for (var prop in this.$form) {
-      if ( this.$form.hasOwnProperty(prop) ) {
-        this.$form[prop].onsubmit = this.onSubmit;
+    var form = document.querySelectorAll('.js-delete-form');
+    for (var prop in form) {
+      if ( form.hasOwnProperty(prop) ) {
+        if ( "onsubmit" in form[prop] ) {
+          form[prop].onsubmit = this.onSubmit;
+        }
       }
     }
   };
@@ -998,6 +1000,8 @@ Pronto!!!
 Agora abra seu browser no endereço do seu APP, no meu caso é ``http://localhost/slim-rest/``.
 
 Extenso né ? Sei disso, mas espero que sirva de ajuda ou auxílio para você.
+
+Mais uma coisa, [clique aqui e veja o app funcionando](http://192.241.214.149/slim-rest/).
 
 Obrigado por ler, e até o próximo post.
 
