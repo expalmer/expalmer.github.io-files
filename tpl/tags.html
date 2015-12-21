@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <main role="main" class="main">
+    <h1 class="title default">Tags</h1>
+    <ul class="posts">
+      {% for tag in tags %}
+      <li class="post--preview">
+        <div class="limiter">
+          <a href="{{|base}}/{{path}}/{{tag.name}}/" title="Post com a tag {{tag.name}}">
+            <h1 class="atags {{tag.name}}">{{tag.name}} <small>( {{tag.total}} )</small></h1>
+          </a>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </main>
+
+{% endblock %}

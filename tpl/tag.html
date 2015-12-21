@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <main role="main" class="main">
+    <h1 class="title {{tag}}">{{tag}}</h1>
+    <ul class="posts">
+      {% for item in pagination.files %}
+      <li class="post--preview">
+        <div class="limiter">
+          <a href="{{|base}}/{{item.path}}/" class="post__item" title="{{item.titleFull}}">
+            <time class="post__time" datetime="{{ item.date | dateFormat }}">{{ item.date | dateFormat }}</time>
+            <h2 class="post__title">{{ item.titleFull }}</h2>
+            <p class="post__resume">{{ item.description }}</p>
+          </a>
+          <iside class="post__related">
+            {% for tag in item.tags %}
+            <a href="{{|base}}/tags/{{tag}}" class="atag {{tag}}" title="Veja mais posts sobre {{tag}}">{{tag}}</a>
+            {% endfor %}
+          </iside>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </main>
+
+{% endblock %}

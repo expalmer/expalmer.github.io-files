@@ -5,11 +5,11 @@ description: "Dessa vez vamos criar novamente um blog estático, mas agora conte
 keywords: "metalsmith, javascript, nodejs, blog estatico, tags, gist, drafts, rss"
 author: Palmer Oliveira
 date: 2014-10-20T15:39:06.157Z
-template: article.hbt
+layout: article.html
 tags: metalsmith, javascript, nodejs
 ---
 
-## Vamos complementar nosso blog feito em [Metalsmith](http://metalsmith.io/) com as features ``tags``, ``gist``, ``drafts`` e um ``rss feed``.
+Vamos complementar nosso blog feito em [Metalsmith](http://metalsmith.io/) com as features ``tags``, ``gist``, ``drafts`` e um ``rss feed``.
 
 Lembra dos plugins que mencionei no post passado? Pois é, o de ``tags`` [metalsmith-tags](https://github.com/totocaster/metalsmith-tags) eu contribui, e o plugin de ``gist`` [metalsmith-gist](https://github.com/expalmer/metalsmith-gist) eu criei, e esses que usaremos aqui :).
 
@@ -267,7 +267,7 @@ Esse é nosso post do tipo **rascunho**, note o campo ``draft: true``, ou seja, 
 
 
 Neste arquivo estamos usando o plugin **metalsmith-gist**, você informa o usuário e o nome da hash do gist ``gist: expalmer/43952d905d75693dea0c``, e depois referencia ele no corpo do post.
-Nesse exemplo o gist original é esse [https://gist.github.com/expalmer/43952d905d75693dea0c](https://gist.github.com/expalmer/43952d905d75693dea0c).
+Nesse exemplo o gist original [é esse aqui](https://gist.github.com/expalmer/43952d905d75693dea0c).
 
 ```javascript
   ---

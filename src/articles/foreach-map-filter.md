@@ -5,11 +5,11 @@ description: "Aprendendo programação funcional fazendo um foreach, map e filte
 keywords: "javascript"
 author: Palmer Oliveira
 date: 2015-08-11T05:13:06.157Z
-template: article.hbt
+layout: article.html
 tags: javascript
 ---
 
-Vou postar uma série de ``Criando seu próprio alguma coisa`` em javascript para deixar registrado meus estudos e espero que sirva de ajuda para você.
+Vou postar uma série de __Criando seu próprio alguma coisa__ em javascript para deixar registrado meus estudos e espero que sirva de ajuda para você.
 
 ## Estudando Programação Funcional em Javascript
 

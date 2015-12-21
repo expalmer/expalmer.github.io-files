@@ -5,11 +5,11 @@ description: "Agora vamos paginar nosso blog feito em Metalsmith."
 keywords: "metalsmith, javascript, nodejs"
 author: Palmer Oliveira
 date: 2015-03-02T16:39:06.157Z
-template: article.hbt
+layout: article.html
 tags: metalsmith, javascript, nodejs
 ---
 
-## Vamos adicionar agora uma ``paginação`` para nosso blog feito com [Metalsmith](http://metalsmith.io/).
+Vamos adicionar agora uma ``paginação`` para nosso blog feito com [Metalsmith](http://metalsmith.io/).
 
 Vamos usar os mesmos arquivos do post anterior, [esses aqui](http://expalmer.github.io/criando-um-blog-estatico-com-metalsmith-contendo-tags-gists-drafts-e-um-rss-feed/), portanto vou postar apenas os arquivos novos ou que sofreram alteração.
 

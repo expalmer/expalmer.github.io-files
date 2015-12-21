@@ -5,7 +5,7 @@ description: "Usando Slim Framework juntamente com o Twig Template, Illuminate D
 keywords: "PHP, SlimFramework, Illuminate Database, Illuminate Validation, Twig Template"
 author: Palmer Oliveira
 date: 2015-02-22T14:00:36.157Z
-template: article.hbt
+layout: article.html
 tags: php, slimframework
 ---
 

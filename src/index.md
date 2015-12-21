@@ -1,3 +1,3 @@
 ---
-template: index.hbt
+layout: index.html
 ---

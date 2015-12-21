@@ -5,7 +5,7 @@ description: "O Slim é um framework em PHP, ele é leve e muito útil, e nós u
 keywords: "PHP, SlimFramework, Illuminate"
 author: Palmer Oliveira
 date: 2014-11-22T12:10:36.157Z
-template: article.hbt
+layout: article.html
 tags: php, slimframework
 ---
 

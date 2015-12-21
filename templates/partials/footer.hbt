@@ -1,6 +1,0 @@
-    <footer class="footer">
-      made with <a href="http://www.metalsmith.io/">metalsmith</a>
-    </footer>
-    <script src="/scripts/main.min.js"></script>
-  </body>
-</html>

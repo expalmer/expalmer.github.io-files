@@ -5,12 +5,11 @@ description: "Tomei coragem e resolvi criar meu blog, e escolhi o Metalsmith por
 keywords: "metalsmith, javascript, nodejs"
 author: Palmer Oliveira
 date: 2014-09-24T17:39:06.157Z
-template: article.hbt
+layout: article.html
 tags: metalsmith, javascript, nodejs
 ---
 
-## Resolvi criar meu blog e escolhi o Metalsmith por ser em javascript, minha linguagem favorita.
-
+Resolvi criar meu blog e escolhi o Metalsmith por ser em javascript, minha linguagem favorita.
 
 Hoje existem alguns geradores de sites estáticos super legais, como o [jekyll](http://jekyllrb.com/),
 mas resolvi procurar algo feito em javascript e encontrei o [Metalsmith](http://metalsmith.io/) criado pela turma do [Segment.io](https://segment.io/).

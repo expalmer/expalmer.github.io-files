@@ -1,4 +1,4 @@
 ---
-template: rss.hbt
+layout: rss.html
 untemplatized: 1
 ---

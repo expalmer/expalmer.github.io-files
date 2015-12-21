@@ -1,76 +1,83 @@
-var Metalsmith   = require('metalsmith');
-var markdown     = require('metalsmith-markdown');
-var templates    = require('metalsmith-templates');
-var Handlebars   = require('handlebars');
-var collections  = require('metalsmith-collections');
-var permalinks   = require('metalsmith-permalinks');
-var tags         = require('metalsmith-tags');
-var tagsIndex    = require('./helpers/tags-index');
-var gist         = require('metalsmith-gist');
-var drafts       = require('metalsmith-drafts');
+const Metalsmith  = require('metalsmith');
+const markdown    = require('metalsmith-markdown');
+const layout      = require('metalsmith-layouts');
+const collections = require('metalsmith-collections');
+const permalinks  = require('metalsmith-permalinks');
+const tags        = require('metalsmith-tags');
+const drafts      = require('metalsmith-drafts');
 
-var untemplatize = require('metalsmith-untemplatize');
+const untemplatize = require('metalsmith-untemplatize');
 
-var concat       = require('metalsmith-concat');
-var cleanCSS     = require('metalsmith-clean-css');
-var uglify       = require('metalsmith-uglify')
-var htmlMinifier = require("metalsmith-html-minifier");
+const concat   = require('metalsmith-concat');
+const cleanCSS = require('metalsmith-clean-css');
+const uglify   = require('metalsmith-uglify')
 
-var helpers      = require('./helpers/helpers');
-//<lastBuildDate>Wed, 01 Oct 2014 22:26:55 GMT</lastBuildDate>
-helpers.handlebarsHelpers( Handlebars );
+const postcss = require('metalsmith-postcss');
+const autoprefixer = require('autoprefixer');
+const partialimport = require('postcss-partial-import');
+const simplevars = require('postcss-simple-vars');
+const variables = require('postcss-css-variables');
+const nested = require('postcss-nested');
+
+require('./helpers/swig_helpers');
+
+const tagsIndex = require('./helpers/tags-index');
 
 Metalsmith(__dirname)
-    .use(drafts())
-    .use(collections({
-        articles: {
-            pattern: 'articles/*.md',
-            sortBy: 'date',
-            reverse: true
-        }
-    }))
-    .use(markdown())
-    // .use(gist())
-    .use(permalinks({
+  .use(drafts())
+  .use(collections({
+    articles: {
+      pattern: 'articles/*.md',
+      sortBy: 'date',
+      reverse: true
+    }
+  }))
+  .use(markdown())
+  .use(permalinks({
         pattern: ':title',
         relative: false
     }))
-    .use(tags({
+  .use(tags({
         handle: 'tags',
-        template:'/partials/tags.hbt',
-        path:'tags',
+        layout: 'tag.html',
+        path: 'tags/:tag/index.html',
         sortBy: 'title',
         reverse: true
     }))
-    .use(tagsIndex({
-        handle: 'tag',
-        path: 'tags',
-        template: '/partials/tags-index.hbt',
-        sortBy: 'tag',
-        reverse: false
-    }))
-    .use(untemplatize({
+  .use(tagsIndex({
+      metadataKey: 'tags', // tag key
+      path: 'tags',  // dir
+      layout: 'tags.html'
+  }))
+  .use(untemplatize({
         key: 'untemplatized'
     }))
-    .use(templates('handlebars'))
-
-    .use(concat({
-        files: 'styles/*.css',
-        output: 'styles/main.min.css'
-    }))
-    .use(cleanCSS({
-        files: "styles/main.min.css",
-        cleanCSS: {
-           noRebase: true
-        }
-    }))
-    .use(concat({
-        files: 'scripts/*.js',
-        output: 'scripts/main.js'
-    }))
-    .use(uglify())
-    .use(htmlMinifier())
-    .destination('./build')
-    .build(function(err, files) {
-        if (err) { throw err; }
+  .use(layout({
+    'engine': 'swig',
+    'directory': 'tpl'
+  }))
+  .use(postcss([
+      autoprefixer({ browsers: ['last 1 version'] }),
+      simplevars(),
+      variables(),
+      nested()
+    ]))
+  .use(concat({
+      files: 'styles/*.css',
+      output: 'styles/main.min.css'
+  }))
+  .use(cleanCSS({
+      files: "styles/main.min.css",
+      cleanCSS: {
+        noRebase: true
+      }
+  }))
+  .use(concat({
+      files: 'scripts/*.js',
+      output: 'scripts/main.js'
+  }))
+  .use(uglify())
+  .destination('./build')
+  .build( ( err, files ) => {
+      if ( err ) throw err;
     });

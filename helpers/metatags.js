@@ -1,7 +1,7 @@
 
-var base   = 'http://expalmer.github.io';
-// var base   = 'http://localhost:3333';
-var author = '@expalmer';
+const base   = 'http://expalmer.github.io';
+// const base   = 'http://localhost:3333';
+const author = '@expalmer';
 
 module.exports =  {
   base          : base,

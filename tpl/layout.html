@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+    {% block title %}
+    <title>{{ 'title' | metaHeader(title) }}</title>
+    {% endblock %}
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/rss.xml">
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+
+    <meta name="author" content="{{ 'author' | meta }}">
+    <meta name="description" content="{{ 'description' | meta(description) }}">
+    <link rel="canonical" href="{{|base}}/{{path}}">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="{{ 'author'| meta }}">
+    <meta name="twitter:domain" content="{{|base}}">
+    <meta name="twitter:image:src" content="{{ 'image' | meta }}">
+    <meta name="twitter:creator" content="{{ 'author' | meta }}">
+    <meta name="twitter:title" content="{{ 'title' | meta(title) }}">
+    <meta name="twitter:description" content="{{ 'description' | meta(description) }}">
+
+    <meta itemprop="name" content="{{ 'title' | meta(title) }}">
+    <meta itemprop="description" content="{{ 'description' | meta(description) }}">
+    <meta itemprop="image" content="{{ 'image' | meta }}">
+    <meta itemprop="url" content="{{|base}}/{{path}}">
+    <meta itemprop="author" content="{{ 'author' | meta }}">
+    <meta itemprop="inLanguage" content="pt-BR">
+    <meta itemprop="keywords" content="{{ 'keywords' | meta(keywords) }}">
+
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="{{ 'image' | meta }}">
+    <meta property="og:title" content="{{ 'title' | meta(title) }}">
+    <meta property="og:description" content="{{ 'description' | meta(description) }}">
+    <meta property="og:url" content="{{|base}}/{{path}}">
+    <meta property="og:site_name" content="{{ 'title' | meta(title) }}">
+
+    <meta name="google-site-verification" content="BkRIiZn31VGZWd4NBpMhpA8pxdgnSOVwB0jaCFP800M" />
+
+    <link rel="stylesheet" href="/styles/main.min.css">
+
+    <link href="/favico.ico" rel="icon">
+
+  </head>
+  <body>
+    <header class="header">
+      <a href="{{|base}}" class="header__home" title="Blog do expalmer">
+        <figure>
+          <img src="{{ 'image' | meta }}" alt="Foto de um Panda de Óculos">
+        </figure>
+        <p>@expalmer</p>
+      </a>
+      <h1>A Javascript Enthusiast</h1>
+      <h2>Juntos Aprendemos Mais :)</h2>
+      <nav class="header__menu">
+        <ul class="menu">
+          <li><a href="{{|base}}" class="menu__link" title="Posts do Blog">Posts</a></li>
+          <li><a href="{{|base}}/tags/" class="menu__link" title="Tags do Blog">Tags</a></li>
+          <li><a href="https://github.com/expalmer" class="menu__link" title="Github do @expalmer">GitHub</a></li>
+          <li><a href="{{|base}}/rss.xml" class="menu__link" title="RSS do Blog">RSS</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer class="footer">
+      <p>Made with <a href="http://www.metalsmith.io/" title="Metalsmith">Metalsmith</a>. View <a href="https://github.com/expalmer/expalmer.github.io-files" title="Source">Source</a></p>
+    </footer>
+    <script src="/scripts/main.min.js"></script>
+  </body>
+</html>

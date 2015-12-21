@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <main class="main">
+    <div class="limiter">
+      <article class="article" itemscope itemtype="https://schema.org/Blog">
+        <header>
+          <time class="post__time" itemprop="datePublished" content="{{ date | dateFormat }}" datetime="{{ date | dateFormat }}">{{ date | dateFormat }}</time>
+          <h1 class="post__title">{{titleFull}}</h1>
+          <iside class="post__related">
+            {% for tag in tags %}
+            <a href="{{|base}}/tags/{{tag}}" class="atag {{tag}}" title="Veja mais posts sobre {{tag}}">{{tag}}</a>
+            {% endfor %}
+          </iside>
+        </header>
+        {{ contents | raw }}
+      </article>
+      <!-- COMMENTS -->
+      <section id="comments">
+        <div id="disqus_thread"></div>
+        <script data-cfasync="true" type="text/javascript">
+            var disqus_shortname = 'expalmer';
+            var disqus_url = '{{|base}}/{{path}}/';
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </section>
+    </div>
+  </main>
+{% endblock %}
