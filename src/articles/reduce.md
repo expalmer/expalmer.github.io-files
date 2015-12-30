@@ -1,6 +1,6 @@
 ---
 title: "Criando seu proprio Array Reduce em Javascript"
-titleFull: Criando seu proprio Array Reduce em Javascript
+titleFull: Criando seu próprio Array Reduce em Javascript
 description: "Aprendendo programação funcional criando um reduce em javascript."
 keywords: "javascript"
 author: Palmer Oliveira
