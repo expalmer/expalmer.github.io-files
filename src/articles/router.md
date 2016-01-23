@@ -9,7 +9,7 @@ layout: article.html
 tags: javascript
 ---
 
-Lí todo código do **router** [pagejs](pagejs), e o que vamos fazer é praticamente reescrevê-lo passo a passo, e acredito que você vai aprender alguns truques assim como eu aprendi.
+Lí todo código do **router** [pagejs](https://visionmedia.github.io/page.js/), e o que vamos fazer é praticamente reescrevê-lo passo a passo, e acredito que você vai aprender alguns truques assim como eu aprendi.
 
 Dividi o post em 2 partes, esse primeiro criando um router básico, e na sequencia um mais completo.
 
@@ -32,8 +32,8 @@ Aqui passamos o **path** e o **callback**.
 
 ```javascript
 micror('/', function(context) {
-	console.log('Home'); 
-});                     
+	console.log('Home');
+});
 ```
 
 #### Chamando uma rota
@@ -41,7 +41,7 @@ micror('/', function(context) {
 Aqui estamos chamando o **path** ``/`` que executará a rota que criamos acima.
 
 ```javascript
-micror.go('/');                     
+micror.go('/');
 ```
 
 #### Iniciando o router
@@ -61,7 +61,7 @@ micror.run(); // micror.run( { base: '/adm', hash: 'true'} );
 
 Nós precisamos passar parâmetros em algumas rotas, por exemplo um ``id`` de um post ``'/post/:id'``, então note esses dois pontos ``:``, isso significa que na rota **post**, vai ter um parâmetro chamado ``id`` e o mesmo é obrigatório.
 
-Mas existem situações que você precisa de um parâmetro, mas o mesmo é opcional, como por exemplo em **posts** ``'/posts/:page/:order?'``, note que nessa rota temos o ``:page`` que é um parâmetro obrigatório, mas temos agora esse ``:order?`` onde temos um ``?`` no final, isso significa que o parâmetro é opcional. 
+Mas existem situações que você precisa de um parâmetro, mas o mesmo é opcional, como por exemplo em **posts** ``'/posts/:page/:order?'``, note que nessa rota temos o ``:page`` que é um parâmetro obrigatório, mas temos agora esse ``:order?`` onde temos um ``?`` no final, isso significa que o parâmetro é opcional.
 
 Tudo isso vai no objeto ``context`` que explico a seguir.
 
@@ -138,14 +138,14 @@ function micror(path, callback){
 
 // objeto que guarda as rotas
 micror.callbacks = [];
-  
+
 ```
 
 Cada vez que criamos uma rota, criamos um objeto chamado ``route`` que possui como atributos (``path``, ``keys``, ``regexp``).
 
-O atributo ``route.regexp`` chama a função ``regexp`` passando o **path** e suas **keys** que é um array vazio. A função retorna uma **expressão regular** que será usada para comparar a rota, e junto já extrai os parâmetros para colocar dentro de ``keys``. Por exemplo, se damos o path ``/posts/:page/:order?``, é retornado ``/^\/posts\/([^\/]+)(?:\/([^\/]+))?(?:\/(?=$))?$/i``, e as ``keys`` ficarão assim ``[ { name: 0 }, { name: 'page' }, { name: 'order' } ]``.  
+O atributo ``route.regexp`` chama a função ``regexp`` passando o **path** e suas **keys** que é um array vazio. A função retorna uma **expressão regular** que será usada para comparar a rota, e junto já extrai os parâmetros para colocar dentro de ``keys``. Por exemplo, se damos o path ``/posts/:page/:order?``, é retornado ``/^\/posts\/([^\/]+)(?:\/([^\/]+))?(?:\/(?=$))?$/i``, e as ``keys`` ficarão assim ``[ { name: 0 }, { name: 'page' }, { name: 'order' } ]``.
 
-A expressão regular acima diz que para fazer o __match__, precisa começar com **/posts** seguido de **qualquer coisa que não seja uma barra e contenha mais de um caracter**, seguido de **opcionalmente qualquer coisa que não seja uma barra e contenha mais de um caracter** e **opcionalemente termine com uma barra**. Ufa... 
+A expressão regular acima diz que para fazer o __match__, precisa começar com **/posts** seguido de **qualquer coisa que não seja uma barra e contenha mais de um caracter**, seguido de **opcionalmente qualquer coisa que não seja uma barra e contenha mais de um caracter** e **opcionalemente termine com uma barra**. Ufa...
 
 Note que as **keys** já estão na ordem certinha dos parâmetros que informados na rota. Os parâmetros obrigatório e/ou opcionais que usamos ``:`` e ``?``, são colocados os seus nomes (``{ name: 'page' }``), nos parâmetros normais é colocado zero (``{ name: 0 }``).
 
@@ -169,7 +169,7 @@ context.params.order = 'asc'
 
 Esse é o truque.
 
-## 2) regexp() 
+## 2) regexp()
 
 Essa é a função que faz tudo que falamos acima, dá uma conferida.
 
@@ -192,7 +192,7 @@ Lá em cima fizemos isso ``micror.callbacks.push(middleware(route, callback));``
 
 Quando essa função for chamada, ela vai pegar o``context`` passado e comparar com o objeto ``route`` que o originou, comparando o  **route.regexp** com o **context.path**. Se der **match** nós preenchemos o atributo ``params`` do **context** com as ``keys`` do **route** conforme falamos acima, e finalmente chamamos o ``callback`` passando o **context**.
 
-Caso não dê **match**, é chamado a função ``next`` que irá verificar outra rota até dar **match** ou acabar as rotas registradas. 
+Caso não dê **match**, é chamado a função ``next`` que irá verificar outra rota até dar **match** ou acabar as rotas registradas.
 
 ```javascript
 function middleware(route, callback) {
@@ -231,7 +231,7 @@ function fillParams(match, keys, params) {
 Aqui é que verificamos cada um dos ``callbacks`` das rotas que foram registrados.
 
 Quando chamamos uma rota, primeiramente é criado uma instância do objeto ``Context``, esse objeto pega o ``path`` passado e extrai várias informações importantes como:
- 
+
 - ``fullPath``: O **path** original com querystring e hash.
 - ``path``: Aqui é retirado a querystring e hash para poder fazer o **match** com o **route.regexp**
 - ``querystring``
@@ -512,20 +512,19 @@ Bom, depois teste passando a ``base``.
 ```javascript
 micror.run({ base: '/adm'}); //(não esqueça de mudar a meta tag **base** no html né)
 ```
-E o ``hash``. 
+E o ``hash``.
 
 ```javascript
-micror.run({ hash: true}); 
+micror.run({ hash: true});
 ```
 
 Teste, leia o código e se divirta. Caso tenha alguma dúvida me pergunte.
 
-Post bem comprido :P, no próximo vamos colocar umas features bem legais. 
+Post bem comprido :P, no próximo vamos colocar umas features bem legais.
 
 Se conseguiu criar o router, **deixe seu comentário aqui em baixo :)**.
 
 Espero que tenham gostado. That's it !
 
-[pagejs]: https://visionmedia.github.io/page.js/
 [replacestate]: https://developer.mozilla.org/en-US/docs/Web/API/History_API#The_replaceState()_method
 [httpster]: https://simbco.github.io/httpster/
